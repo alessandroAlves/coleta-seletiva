@@ -54,5 +54,14 @@ describe Admin::CountiesController do
 		it { should set_the_flash.to( "atualizado com sucesso" ) }
 
 	end
-  
+
+	describe "GET show" do
+		before(:each){ get :show, id: county.id }
+
+		it { should respond_with(:success) }
+		it "should respond to a register" do
+			assigns(:county).should eq( county )
+		end
+	end
+
 end

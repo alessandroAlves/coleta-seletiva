@@ -18,8 +18,12 @@ class Admin::CountiesController < Admin::AdminController
 	end
 
 	def update
-		@couny = County.find( params[:id])
+		@couny = County.find( params[:id] ) 
 		@couny.update( params.require("county").permit(:name, :code, :cnpj) )
 		redirect_to admin_counties_path, notice: "atualizado com sucesso"
 	end	
+
+	def show
+		@county = County.find( params[:id] )
+	end
 end
