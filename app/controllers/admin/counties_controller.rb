@@ -26,4 +26,10 @@ class Admin::CountiesController < Admin::AdminController
 	def show
 		@county = County.find( params[:id] )
 	end
+
+	def destroy
+		@county = County.find( params[:id] ) 
+		@county.destroy
+		redirect_to admin_counties_path, notice: "removido com sucesso"
+	end
 end

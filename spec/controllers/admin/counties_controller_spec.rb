@@ -64,4 +64,12 @@ describe Admin::CountiesController do
 		end
 	end
 
+	describe "DELETE destroy" do
+		before(:each){ delete :destroy, id: county.id }
+
+		it { should respond_with(:redirect) }
+		it { should redirect_to( admin_counties_path ) }
+		it { should set_the_flash.to( "removido com sucesso" ) }
+		
+	end
 end
