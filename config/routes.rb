@@ -3,7 +3,7 @@ ColetaSeletiva::Application.routes.draw do
 
   namespace :admin do
     get "dashboard" => "dashboard#index"
+    resources :counties
 
-    get "counties", controller: "counties", action: "index"
   end
 end
