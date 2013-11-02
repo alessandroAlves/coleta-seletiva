@@ -1,2 +1,28 @@
 <h1>
-	Inddex</h1>
+Total de registros: <%= @counties.count%>	
+</h1>
+
+<table>
+	<tr>
+		<th>Id</th>
+		<th>Nome</th>
+		<th>Código</th>
+		<th>CNPJ</th>
+		<th>Ações</th>
+	</tr>
+	<% @counties.each do |county|%>
+	<tr>
+		<td><%= county.id %></td> 
+		<td><%= county.name %></td>
+		<td><%= county.code %></td>
+		<td><%= county.cnpj %></td>
+		<td>
+			<a href="<%= edit_admin_county_path( county )%>">Editar</a> |
+			<a href="<%= admin_county_path( county )%>">Show</a> |
+			<%= link_to "Delete", admin_county_path(county), method: :delete, confirm: "Tem certeza ?"%>
+		</td>
+	</tr>
+	<% end %>
+</table>
+<br />
+<a href="<%= new_admin_county_path %>" >Novo </a>

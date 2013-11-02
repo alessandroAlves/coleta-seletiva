@@ -13,14 +13,20 @@ class Admin::CountiesController < Admin::AdminController
 
 	def create
 		@county = County.new( params.require("county").permit(:name, :code, :cnpj) )
-		@county.save
-		redirect_to admin_counties_path, notice: "salvo com sucesso"
+		if @county.save
+			redirect_to admin_counties_path, notice: "salvo com sucesso"
+		else
+			render action: :new
+		end
 	end
 
 	def update
-		@couny = County.find( params[:id] ) 
-		@couny.update( params.require("county").permit(:name, :code, :cnpj) )
-		redirect_to admin_counties_path, notice: "atualizado com sucesso"
+		@county = County.find( params[:id] ) 
+		if @county.update( params.require("county").permit(:name, :code, :cnpj) )
+			redirect_to admin_counties_path, notice: "atualizado com sucesso"
+		else
+			render action: :edit
+		end
 	end	
 
 	def show

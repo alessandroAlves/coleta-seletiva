@@ -1,3 +1,20 @@
-<h1>
-	Show
-</h1>
+<table>
+
+	<td>
+		<tr>ID : </tr>
+		<tr><%= @county.id %></tr>
+		<br />
+		<tr>NOME : </tr>
+		<tr><%= @county.name %></tr>
+		<br />
+		<tr>CÓDIGO : </tr>
+		<tr><%= @county.code %></tr>
+		<br />
+		<tr>CNPJ : </tr>
+		<tr><%= @county.cnpj %></tr>
+	</td>
+
+</table>
+<br />
+
+	<a href="<%= admin_counties_path %>">Voltar</a>
