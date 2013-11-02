@@ -38,12 +38,21 @@ describe Admin::CountiesController do
 	end
 
 	describe "POST create" do
-		before(:each){ post :create, county: { name: "Bolas", code: "123", cnpj: "1234" }  }
+		before(:each){ post :create, county: { name: "Caxias", code: "123", cnpj: "1234" }  }
 
 		it { should respond_with(:redirect) }
 		it { should redirect_to( admin_counties_path ) }
     	it { should set_the_flash.to( "salvo com sucesso" ) }
 
 	end	
+
+	describe "PACTH update" do
+		before(:each){ patch :update, id: county.id , county: { name:"Duque de Caxias", code: "123", cnpj: "1234" } }
+
+		it { should respond_with(:redirect) }
+		it { should redirect_to( admin_counties_path ) }
+		it { should set_the_flash.to( "atualizado com sucesso" ) }
+
+	end
   
 end

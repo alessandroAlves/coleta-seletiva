@@ -16,4 +16,10 @@ class Admin::CountiesController < Admin::AdminController
 		@county.save
 		redirect_to admin_counties_path, notice: "salvo com sucesso"
 	end
+
+	def update
+		@couny = County.find( params[:id])
+		@couny.update( params.require("county").permit(:name, :code, :cnpj) )
+		redirect_to admin_counties_path, notice: "atualizado com sucesso"
+	end	
 end
